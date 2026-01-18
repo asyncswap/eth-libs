@@ -1,4 +1,22 @@
 {
   "name": "@msaki/jsonrpc",
-  "version": "1.0.0"
+  "author": "Meek Msaki",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup index.ts --format cjs,esm --dts",
+    "publish": "bun run build && changeset publish",
+    "lint": "tsc"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8",
+    "@types/bun": "latest",
+    "tsup": "^8.5.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }
