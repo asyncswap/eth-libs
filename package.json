@@ -1,9 +1,14 @@
 {
   "name": "libs",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "author": "Meek Msaki",
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build:jsonrpc": "cd packages/jsonrpc && bun run build"
+  },
   "dependencies": {
     "@msaki/jsonrpc": "workspace:jsonrpc"
   },
