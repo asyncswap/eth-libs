@@ -21,7 +21,6 @@
     "lint": "tsc"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.8",
     "@types/bun": "latest",
     "tsup": "^8.5.1"
   },
