@@ -1,4 +1,4 @@
-import { JsonRpcClient } from "@msaki/jsonrpc";
+import { JsonRpcClient, initializeRpcClient } from "@msaki/jsonrpc";
 export type * as EthSchema from "./types";
 import type { EthSchema } from ".";
 
@@ -30,7 +30,11 @@ export enum Methods {
 }
 
 export class EthExecutionClient {
-  constructor(private client: JsonRpcClient) { }
+  private client: JsonRpcClient;
+
+  constructor(url: string) {
+    this.client = initializeRpcClient(url)
+  }
 
   // eth/transaction
   async eth_getTransactionByHash(
