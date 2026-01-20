@@ -77,7 +77,7 @@ export class EngineExecutionClient {
 	async engine_getBlobsV3(
 		blobedVersionedHashes: Hash32[],
 	): Promise<Array<BlobAndProofV2[] | null> | null> {
-		return await this.client.call(EngineMethods.engine_getBlobsV2, [
+		return await this.client.call(EngineMethods.engine_getBlobsV3, [
 			blobedVersionedHashes,
 		]);
 	}
