@@ -1,23 +1,8 @@
-# jsonrpc
-
-## `@msaki/jsonrpc`
-
-A minimal jsonrpc server and client library.
-
-```sh
-bun add @msaki/jsonrpc
-```
-
-## Usage
-
-### RPC Server
-
-```ts
-import { JsonRpcServer } from "@msaki/jsonrpc";
+import { JsonRpcServer } from "./src";
 
 const server = new JsonRpcServer()
 
-server.register("add", ([a,b]: [number, number]) => a + b)
+server.register("add", ([a, b]: [number, number]) => a + b)
 server.register("ping", () => "pong")
 
 Bun.serve({
@@ -36,12 +21,9 @@ Bun.serve({
 })
 
 console.log("JSON-RPC sever on http://localhost:4444")
-```
 
-### RPC Client
 
-```ts
-import { initializeRpcClient } from "@msaki/jsonrpc";
+import { initializeRpcClient } from "./src";
 const url = "http://localhost:4444";
 const client = initializeRpcClient(url);
 const result = await client.call(
@@ -49,4 +31,3 @@ const result = await client.call(
   []
 );
 console.log(result)
-```
