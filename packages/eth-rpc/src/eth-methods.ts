@@ -1,0 +1,198 @@
+import { JsonRpcClient } from "@msaki/jsonrpc";
+export type * as EthSchema from "./types";
+import type { EthSchema } from ".";
+
+export enum Methods {
+  // eth/transaction
+  eth_getTransactionByHash              = "eth_getTransactionByHash",
+  eth_getTransactionByBlockHashAndIndex = "eth_getTransactionByBlockHashAndIndex",
+  eth_getTransactionReceipt             = "eth_getTransactionReceipt",
+  // eth/submit
+  eth_sendTransaction                   = "eth_sendTransaction",
+  eth_sendRawTransaction                = "eth_sendRawTransaction",
+  // eth/state
+  eth_getBalance                        = "eth_getBalance",
+  eth_getStorageAt                      = "eth_getStorageAt",
+  eth_getTransactionCount               = "eth_getTransactionCount",
+  eth_getCode                           = "eth_getCode",
+  eth_getProof                          = "eth_getProof",
+  // eth/sign
+  eth_sign                              = "eth_sign",
+  eth_signTransaction                   = "eth_signTransaction",
+  // eth/filter
+  eth_newFilter                         = "eth_newFilter",
+  eth_newBlockFilter                    = "eth_newBlockFilter",
+  eth_newPendingTransactionFilter       = "eth_newPendingTransactionFilter",
+  eth_uninstallFilter                   = "eth_uninstallFilter",
+  eth_getFilterChanges                  = "eth_getFilterChanges",
+  eth_getFilterLogs                     = "eth_getFilterLogs",
+  eth_getLogs                           = "eth_getLogs",
+}
+
+export class EthExecutionClient {
+  constructor(private client: JsonRpcClient) { }
+
+  // eth/transaction
+  async eth_getTransactionByHash(
+    transactioHash: EthSchema.Hash32
+  ): Promise<EthSchema.NotFound | EthSchema.TransactionInfo> {
+    return await this.client.call(
+      Methods.eth_getTransactionByHash,
+      [transactioHash]
+    );
+  }
+  async eth_getTransactionByBlockHashAndIndex(
+    blockHash: EthSchema.Hash32,
+    transactionIndex: EthSchema.Uint
+  ): Promise<EthSchema.NotFound | EthSchema.TransactionInfo>{
+    return await this.client.call(
+      Methods.eth_getTransactionByBlockHashAndIndex,
+      [blockHash, transactionIndex]
+    );
+  }
+  async eth_getTransactionReceipt(
+    transactionHash: EthSchema.Hash32,
+  ): Promise<EthSchema.NotFound | EthSchema.ReceiptInfo>{
+    return await this.client.call(
+      Methods. eth_getTransactionReceipt,
+      [transactionHash]
+    );
+  }
+
+  // eth/submit
+  async eth_sendTransaction(
+    transaction: EthSchema.GenericTransaction
+  ): Promise<EthSchema.Hash32> {
+    return await this.client.call(
+      Methods.eth_sendTransaction,
+      [transaction]
+    )
+  }
+  async eth_sendRawTransaction(
+    transaction: EthSchema.Bytes
+  ): Promise<EthSchema.Hash32>  {
+    return await this.client.call(
+      Methods.eth_sendRawTransaction,
+      [transaction]
+    )
+  }
+  // eth/state
+  async eth_getBalance(
+    address: EthSchema.Address,
+    block: EthSchema.BlockNumberOrTagOrHash
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_getBalance,
+      [address, block]
+    )
+  }
+  async eth_getStorageAt(
+    address: EthSchema.Address,
+    storageSlot: EthSchema.Bytes32,
+    block: EthSchema.BlockNumberOrTagOrHash
+  ): Promise<EthSchema.Bytes> {
+    return await this.client.call(
+      Methods.eth_getStorageAt,
+      [address, storageSlot, block]
+    )
+  }
+  async eth_getTransactionCount(
+    address: EthSchema.Address,
+    block: EthSchema.BlockNumberOrTagOrHash
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_getTransactionCount,
+      [address, block]
+    )
+  }
+  async eth_getCode(
+    address: EthSchema.Address,
+    block: EthSchema.BlockNumberOrTagOrHash
+  ): Promise<EthSchema.Bytes> {
+    return await this.client.call(
+      Methods.eth_getCode,
+      [address, block]
+    )
+  }
+  async eth_getProof(
+    address: EthSchema.Address,
+    storageKeys: EthSchema.Bytes32[],
+    block: EthSchema.BlockNumberOrTagOrHash,
+  ): Promise<EthSchema.AccountProof> {
+    return await this.client.call(
+      Methods.eth_getProof,
+      [address, storageKeys, block]
+    )
+  }
+  // eth/sign
+  async eth_sign(
+    address: EthSchema.Address,
+    message: EthSchema.Bytes
+  ): Promise<EthSchema.Bytes65> {
+    return await this.client.call(
+      Methods.eth_sign,
+      [address, message]
+    )
+  }
+  async eth_signTransaction(
+    transaction: EthSchema.GenericTransaction
+  ): Promise<EthSchema.Bytes> {
+    return await this.client.call(
+      Methods.eth_signTransaction,
+      [transaction]
+    )
+  }
+  // eth/filter
+  async eth_newFilter(
+    filter: EthSchema.Filter
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_newFilter,
+      [filter],
+    )
+  }
+  async eth_newBlockFilter(
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_newBlockFilter,
+      [],
+    )
+  }
+  async eth_newPendingTransactionFilter(
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_newPendingTransactionFilter,
+      []
+    )
+  }
+  async eth_uninstallFilter(
+  ): Promise<EthSchema.Uint> {
+    return await this.client.call(
+      Methods.eth_uninstallFilter,
+      []
+    )
+  }
+  async eth_getFilterChanges(
+  ): Promise<EthSchema.FilterResults> {
+    return await this.client.call(
+      Methods.eth_getFilterChanges,
+      []
+    )
+  }
+  async eth_getFilterLogs(
+    filterIdentifier: EthSchema.Uint
+  ): Promise<EthSchema.FilterResults> {
+    return await this.client.call(
+      Methods.eth_getFilterLogs,
+      [filterIdentifier]
+    )
+  }
+  async eth_getLogs(
+    filter: EthSchema.Filter
+  ): Promise<EthSchema.FilterResults> {
+    return await this.client.call(
+      Methods.eth_getLogs,
+      [filter]
+    )
+  }
+}
