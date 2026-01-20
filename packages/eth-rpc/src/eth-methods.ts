@@ -4,29 +4,29 @@ import type { EthSchema } from ".";
 
 export enum Methods {
   // eth/transaction
-  eth_getTransactionByHash              = "eth_getTransactionByHash",
+  eth_getTransactionByHash = "eth_getTransactionByHash",
   eth_getTransactionByBlockHashAndIndex = "eth_getTransactionByBlockHashAndIndex",
-  eth_getTransactionReceipt             = "eth_getTransactionReceipt",
+  eth_getTransactionReceipt = "eth_getTransactionReceipt",
   // eth/submit
-  eth_sendTransaction                   = "eth_sendTransaction",
-  eth_sendRawTransaction                = "eth_sendRawTransaction",
+  eth_sendTransaction = "eth_sendTransaction",
+  eth_sendRawTransaction = "eth_sendRawTransaction",
   // eth/state
-  eth_getBalance                        = "eth_getBalance",
-  eth_getStorageAt                      = "eth_getStorageAt",
-  eth_getTransactionCount               = "eth_getTransactionCount",
-  eth_getCode                           = "eth_getCode",
-  eth_getProof                          = "eth_getProof",
+  eth_getBalance = "eth_getBalance",
+  eth_getStorageAt = "eth_getStorageAt",
+  eth_getTransactionCount = "eth_getTransactionCount",
+  eth_getCode = "eth_getCode",
+  eth_getProof = "eth_getProof",
   // eth/sign
-  eth_sign                              = "eth_sign",
-  eth_signTransaction                   = "eth_signTransaction",
+  eth_sign = "eth_sign",
+  eth_signTransaction = "eth_signTransaction",
   // eth/filter
-  eth_newFilter                         = "eth_newFilter",
-  eth_newBlockFilter                    = "eth_newBlockFilter",
-  eth_newPendingTransactionFilter       = "eth_newPendingTransactionFilter",
-  eth_uninstallFilter                   = "eth_uninstallFilter",
-  eth_getFilterChanges                  = "eth_getFilterChanges",
-  eth_getFilterLogs                     = "eth_getFilterLogs",
-  eth_getLogs                           = "eth_getLogs",
+  eth_newFilter = "eth_newFilter",
+  eth_newBlockFilter = "eth_newBlockFilter",
+  eth_newPendingTransactionFilter = "eth_newPendingTransactionFilter",
+  eth_uninstallFilter = "eth_uninstallFilter",
+  eth_getFilterChanges = "eth_getFilterChanges",
+  eth_getFilterLogs = "eth_getFilterLogs",
+  eth_getLogs = "eth_getLogs",
 }
 
 export class EthExecutionClient {
@@ -48,7 +48,7 @@ export class EthExecutionClient {
   async eth_getTransactionByBlockHashAndIndex(
     blockHash: EthSchema.Hash32,
     transactionIndex: EthSchema.Uint
-  ): Promise<EthSchema.NotFound | EthSchema.TransactionInfo>{
+  ): Promise<EthSchema.NotFound | EthSchema.TransactionInfo> {
     return await this.client.call(
       Methods.eth_getTransactionByBlockHashAndIndex,
       [blockHash, transactionIndex]
@@ -56,9 +56,9 @@ export class EthExecutionClient {
   }
   async eth_getTransactionReceipt(
     transactionHash: EthSchema.Hash32,
-  ): Promise<EthSchema.NotFound | EthSchema.ReceiptInfo>{
+  ): Promise<EthSchema.NotFound | EthSchema.ReceiptInfo> {
     return await this.client.call(
-      Methods. eth_getTransactionReceipt,
+      Methods.eth_getTransactionReceipt,
       [transactionHash]
     );
   }
@@ -74,7 +74,7 @@ export class EthExecutionClient {
   }
   async eth_sendRawTransaction(
     transaction: EthSchema.Bytes
-  ): Promise<EthSchema.Hash32>  {
+  ): Promise<EthSchema.Hash32> {
     return await this.client.call(
       Methods.eth_sendRawTransaction,
       [transaction]

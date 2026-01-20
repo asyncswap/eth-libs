@@ -343,7 +343,7 @@ export interface CallResultFailure {
   error: EXECUTION_REVERTED_ERROR | VM_EXECUTION_ERROR
 }
 export type EXECUTION_REVERTED_ERROR = { code: -32000, message: "execution reverted." }
-export type VM_EXECUTION_ERROR = { code: -32015, message: "vm execution error."}
+export type VM_EXECUTION_ERROR = { code: -32015, message: "vm execution error." }
 export interface CallResultSuccess {
   status: "0x1"
   returnData: Bytes
