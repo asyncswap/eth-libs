@@ -2,7 +2,7 @@
 	"name": "@msaki/eth-rpc",
 	"description": "A library for ethereum execution clients apis.",
 	"author": "Meek Msaki",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
@@ -41,6 +41,6 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@msaki/jsonrpc": "^0.2.0"
+		"@msaki/jsonrpc": "^0.3.0"
 	}
 }
