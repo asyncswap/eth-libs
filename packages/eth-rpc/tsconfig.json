@@ -1,7 +1,9 @@
 {
 	"compilerOptions": {
 		// Environment setup & latest features
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"target": "ESNext",
 		"module": "Preserve",
 		"moduleDetection": "force",
@@ -28,6 +30,11 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
 	},
-	"include": ["src/**/*"],
-	"exclude": ["example.ts"]
+	"include": [
+		"src/**/*",
+		"global.d.ts"
+	],
+	"exclude": [
+		"example.ts"
+	]
 }
