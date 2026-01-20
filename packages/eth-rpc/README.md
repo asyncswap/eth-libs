@@ -10,6 +10,8 @@ bun add @msaki/eth-rpc
 
 ## Usage
 
+### Ethereum Execution Client Api
+
 ```ts
 import { EthExecutionClient } from '@msaki/eth-rpc';
 
@@ -21,4 +23,16 @@ const balance = await eth.eth_getBalance(
   "latest"
 );
 console.log('Balance:', balance);
+```
+
+### Ethereum Engine Api
+
+```ts
+import { EngineExecutionClient } from "@msaki/eth-rpc";
+
+const engineUrl = "https://localhost:8551";
+const engine = new EngineExecutionClient(engineUrl);
+const payload = engine.engine_getPayloadV1("0x1");
+
+console.log(payload);
 ```

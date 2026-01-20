@@ -8,3 +8,10 @@ const balance = await eth.eth_getBalance(
 	"latest",
 );
 console.log("Balance:", balance);
+
+import { EngineExecutionClient } from "./src";
+
+const engineUrl = "https://localhost:8551";
+const engine = new EngineExecutionClient(engineUrl);
+const payload = engine.engine_getPayloadV1("0x1");
+console.log(payload);
