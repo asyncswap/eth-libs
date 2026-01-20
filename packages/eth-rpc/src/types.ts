@@ -10,7 +10,7 @@ export type Bytes48 = Hex;
 export type Bytes96 = Hex;
 export type Bytes256 = Hex;
 export type Bytes65 = Hex;
-export type Ratio = number; // range [0, 1]
+export type Ratio = number;
 export type Uint = Hex;
 export type Uint64 = Hex;
 export type Uint256 = Hex;
@@ -365,4 +365,14 @@ export interface Syncing {
 	startingBlock?: Uint;
 	currentBlock?: Uint;
 	highestBlock?: Uint;
+}
+
+// misc
+export interface FeeHistoryResults {
+	oldestBlock: Uint;
+	baseFeePerGas: Uint[];
+	baseFeePerBlobGas?: Uint[];
+	gasUsedRatio: Ratio[];
+	blobGasUsedRatio?: Ratio[];
+	reward?: Uint[][];
 }
