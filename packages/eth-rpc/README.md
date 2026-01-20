@@ -2,7 +2,7 @@
 
 ## `@msaki/eth-rpc`
 
-A minimal ethereum rpc client implementation.
+A complete library for ethereum rpc clients apis.
 
 ```sh
 bun add @msaki/eth-rpc

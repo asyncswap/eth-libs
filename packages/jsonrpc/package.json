@@ -1,5 +1,6 @@
 {
 	"name": "@msaki/jsonrpc",
+	"description": "A minimal jsonrpc server, and client implementation.",
 	"author": "Meek Msaki",
 	"version": "0.2.1",
 	"license": "MIT",
@@ -10,10 +11,20 @@
 		"dist",
 		"src"
 	],
+	"keywords": [
+		"jsonrpc",
+		"2.0",
+		"rpc",
+		"bun"
+	],
+	"homepage": "https://github.com/mmsaki/libs/tree/main/packages/jsonrpc",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/mmsaki/libs.git",
 		"directory": "packages/jsonrpc"
+	},
+	"bugs": {
+		"url": "https://github.com/mmsaki/libs/issues"
 	},
 	"publishConfig": {
 		"access": "public",

@@ -1,5 +1,6 @@
 {
 	"name": "@msaki/eth-rpc",
+	"description": "A library for ethereum rpc clients apis.",
 	"author": "Meek Msaki",
 	"version": "0.2.1",
 	"license": "MIT",
@@ -11,10 +12,21 @@
 		"dist",
 		"src"
 	],
+	"keywords": [
+		"eth",
+		"rpc",
+		"ethereum",
+		"engine-api",
+		"execution-apis"
+	],
+	"homepage": "https://github.com/mmsaki/libs/tree/main/packages/eth-rpc",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/mmsaki/libs.git",
 		"directory": "packages/eth-rpc"
+	},
+	"bugs": {
+		"url": "https://github.com/mmsaki/libs/issues"
 	},
 	"publishConfig": {
 		"access": "public",
