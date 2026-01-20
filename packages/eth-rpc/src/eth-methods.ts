@@ -34,6 +34,11 @@ export enum Methods {
 	eth_blobBaseFee = "eth_blobBaseFee",
 	eth_maxPriorityFeePerGas = "eth_maxPriorityFeePerGas",
 	eth_feeHistory = "eth_feeHistory",
+	// eth/execute
+	eth_call = "eth_call",
+	eth_estimateGas = "eth_estimateGas",
+	eth_createAccessList = "eth_createAccessList",
+	eth_simulateV1 = "eth_simulateV1",
 }
 
 export class EthExecutionClient {
@@ -185,5 +190,36 @@ export class EthExecutionClient {
 			newestBlock,
 			rewardPercentiles,
 		]);
+	}
+	// eth/execute
+	async eth_call(
+		transaction: EthSchema.GenericTransaction,
+		block: EthSchema.BlockNumberOrTagOrHash,
+	): Promise<EthSchema.Bytes> {
+		return this.client.call(Methods.eth_call, [transaction, block]);
+	}
+	async eth_estimateGas(
+		transaction: EthSchema.GenericTransaction,
+		block: EthSchema.BlockNumberOrTag,
+	): Promise<EthSchema.Uint> {
+		return await this.client.call(Methods.eth_estimateGas, [
+			transaction,
+			block,
+		]);
+	}
+	async eth_createAccessList(
+		transaction: EthSchema.GenericTransaction,
+		block: EthSchema.BlockNumberOrTag,
+	): Promise<EthSchema.AccessListResult> {
+		return await this.client.call(Methods.eth_createAccessList, [
+			transaction,
+			block,
+		]);
+	}
+	async eth_simulateV1(
+		payload: EthSchema.EthSimulatePayload,
+		blockTag: EthSchema.BlockNumberOrTagOrHash,
+	): Promise<EthSchema.EthSimulateResult> {
+		return await this.client.call(Methods.eth_simulateV1, [payload, blockTag]);
 	}
 }

@@ -376,3 +376,8 @@ export interface FeeHistoryResults {
 	blobGasUsedRatio?: Ratio[];
 	reward?: Uint[][];
 }
+export interface AccessListResult {
+	accessList?: AccessListEntry[];
+	error?: string;
+	gasUsed?: Uint;
+}
