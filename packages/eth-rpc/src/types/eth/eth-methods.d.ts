@@ -1,5 +1,5 @@
 declare global {
-	export enum Methods {
+	export enum EthMethods {
 		// eth/transaction
 		eth_getTransactionByHash = "eth_getTransactionByHash",
 		eth_getTransactionByBlockHashAndIndex = "eth_getTransactionByBlockHashAndIndex",
