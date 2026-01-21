@@ -1,5 +1,11 @@
 # @msaki/jsonrpc
 
+## 0.3.1
+
+### Patch Changes
+
+- 1c3a46e: fix example
+
 ## 0.3.0
 
 ### Minor Changes
