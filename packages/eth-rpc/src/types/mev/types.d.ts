@@ -98,11 +98,13 @@ declare global {
 
 	export type EthSendBundleParams = {
 		txs: Hex[];
-		blockNumber: string;
+		blockNumber: Hex | "0x" | null; // 0x | null or missing field for next block only
+		// Replacing: send bundle with same replacementUuid to override previous one
+		// Canceling: send bundle with same replacementUuid and empty list of transactions to cancel
+		replacementUuid?: string;
 		revertingTxHashes?: Hex[];
 		minBlockNumber?: Hex;
 		maxBlockNumber?: Hex;
-		replacementUuid?: string;
 		minFlashblockNumber?: Hex;
 		maxFlashblockNumber?: Hex;
 		minTimestamp?: number;

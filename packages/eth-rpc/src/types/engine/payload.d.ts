@@ -27,8 +27,8 @@ declare global {
 	export interface ExecutionPayloadV1 {
 		parentHash: Hash32;
 		feeRecipient: Address;
-		stateRoot: Hash32;
-		receiptsRoot: Hash32;
+		stateRoot: Bytes32;
+		receiptsRoot: Bytes32;
 		logsBloom: Bytes256;
 		prevRandao: Bytes32;
 		blockNumber: Uint64;
@@ -49,8 +49,8 @@ declare global {
 	export interface ExecutionPayloadV2 {
 		parentHash: Hash32;
 		feeRecipient: Address;
-		stateRoot: Hash32;
-		receiptsRoot: Hash32;
+		stateRoot: Bytes32;
+		receiptsRoot: Bytes32;
 		logsBloom: Bytes256;
 		prevRandao: Bytes32;
 		blockNumber: Uint64;
@@ -66,8 +66,8 @@ declare global {
 	export interface ExecutionPayloadV3 {
 		parentHash: Hash32;
 		feeRecipient: Address;
-		stateRoot: Hash32;
-		receiptsRoot: Hash32;
+		stateRoot: Bytes32;
+		receiptsRoot: Bytes32;
 		logsBloom: Bytes256;
 		prevRandao: Bytes32;
 		blockNumber: Uint64;
@@ -85,8 +85,8 @@ declare global {
 	export interface ExecutionPayloadV4 {
 		parentHash: Hash32;
 		feeRecipient: Address;
-		stateRoot: Hash32;
-		receiptsRoot: Hash32;
+		stateRoot: Bytes32;
+		receiptsRoot: Bytes32;
 		logsBloom: Bytes256;
 		prevRandao: Bytes32;
 		blockNumber: Uint64;
