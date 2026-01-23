@@ -1,55 +1,47 @@
 export class JsonRpcClient {
 	private id = 0;
 
-	constructor(
-		private send: (
-			req: JsonRpcRequest<unknown>,
-		) => Promise<JsonRpcResponse<unknown, number>>,
-	) { }
+	constructor(private url: string) { }
 
 	async call<Method = string, Result = unknown, E = unknown>(
 		method: Method,
-		params?: unknown[],
+		params: unknown[] = [],
+		headers?: Record<string, string>,
 	): Promise<Result | E> {
-		const request: JsonRpcRequest<Method> = {
-			jsonrpc: "2.0",
+		const request: JsonRpcRequest<Method> = this.buildRequest<Method>(
 			method,
 			params,
-			id: ++this.id,
-		};
-		const response = await this.send(request);
+		);
+		const response = await this.request(request, headers);
+		++this.id;
 		if ("error" in response) {
 			return response.error as E;
 		}
 		return response.result as Result;
 	}
 
-	notify<Method = string>(method: Method, params?: unknown[]) {
-		const request: JsonRpcRequest<Method> = {
-			jsonrpc: "2.0",
+	buildRequest<Method>(method: Method, params: unknown[] = []) {
+		return {
+			jsonrpc: "2.0" as const,
 			method,
 			params,
+			id: this.id,
 		};
-		return this.send(request);
 	}
-}
 
-export function initializeRpcClient(
-	url: string,
-	jwtToken?: string,
-	timeout: number = 5000,
-	otherHeaders?: Record<string, string>,
-): JsonRpcClient {
-	const client = new JsonRpcClient(async (req: JsonRpcRequest<unknown>) => {
+	private async request(
+		req: JsonRpcRequest<unknown>,
+		customHeaders?: Record<string, string>,
+		timeout: number = 5000,
+	) {
 		const controller = new AbortController();
 		const timeoutId = setTimeout(() => controller.abort(), timeout);
 		try {
 			const headers: Record<string, string> = {
 				"Content-Type": "application/json",
-				...(jwtToken ? { Authorization: `Bearer ${jwtToken}` } : {}),
-				...(otherHeaders ?? {}),
+				...(customHeaders ?? {}),
 			};
-			const res = await fetch(url, {
+			const res = await fetch(this.url, {
 				method: "POST",
 				headers,
 				body: JSON.stringify(req),
@@ -63,6 +55,14 @@ export function initializeRpcClient(
 			}
 			throw err;
 		}
-	});
-	return client;
+	}
+
+	notify<Method = string>(method: Method, params?: unknown[]) {
+		const request: JsonRpcRequest<Method> = {
+			jsonrpc: "2.0",
+			method,
+			params,
+		};
+		return this.request(request);
+	}
 }
