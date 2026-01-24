@@ -1,50 +1,114 @@
 # jsonrpc
 
-## `@asyncswap/jsonrpc`
+A minimal JSON-RPC 2.0 server and client library.
 
-A minimal jsonrpc server and client library.
+## Installation
 
-```sh
+```bash
 bun add @asyncswap/jsonrpc
 ```
 
-## Usage
+## Quick Start
 
-### RPC Server
+### Server
 
-```ts
-import { JsonRpcServer } from "@asyncswap/jsonrpc";
+```typescript
+import { JsonRpcServer } from '@asyncswap/jsonrpc';
 
-const server = new JsonRpcServer()
+const server = new JsonRpcServer();
 
-server.register("add", ([a,b]: [number, number]) => a + b)
-server.register("ping", () => "pong")
+// Register methods
+server.register('add', ([a, b]: [number, number]) => a + b);
+server.register('ping', () => 'pong');
+
+// Handle requests
+const response = await server.handle({
+  jsonrpc: '2.0',
+  method: 'add',
+  params: [2, 3],
+  id: 1
+});
+
+console.log(response); // { jsonrpc: '2.0', result: 5, id: 1 }
+```
+
+### Client
+
+```typescript
+import { JsonRpcClient } from '@asyncswap/jsonrpc';
+
+const client = new JsonRpcClient('http://localhost:4444');
+
+// Make a call
+const result = await client.call('add', [2, 3]);
+console.log(result); // 5
+
+// Send a notification (no response expected)
+await client.notify('log', ['Hello world']);
+```
+
+## API Reference
+
+### JsonRpcServer
+
+#### Methods
+
+- `register(method: string, handler: Handler<any>)` - Register a method handler
+- `handle(request: any)` - Process a JSON-RPC request
+
+#### Error Codes
+
+```typescript
+enum JsonRpcErrorCodes {
+  INVALID_REQUEST = -32600,
+  METHOD_NOT_FOUND = -32601,
+  INVALID_PARAMS = -32602,
+  INTERNAL_ERROR = -32603,
+  PARSE_ERROR = -32700,
+  REQUEST_ABORTED = -32800,
+}
+```
+
+### JsonRpcClient
+
+#### Constructor
+
+- `new JsonRpcClient(url: string)` - Create a client instance
+
+#### Methods
+
+- `call<Method, Result, Error>(method, params?, headers?)` - Make a JSON-RPC call
+- `notify<Method>(method, params?)` - Send a JSON-RPC notification
+- `buildRequest(method, params?)` - Build a JSON-RPC request object
+
+## Examples
+
+```typescript
+// Server example
+import { JsonRpcServer } from '@asyncswap/jsonrpc';
+
+const server = new JsonRpcServer();
+server.register('add', ([a, b]: [number, number]) => a + b);
 
 Bun.serve({
   port: 4444,
   async fetch(req) {
-    if (req.method !== "POST") {
-      return new Response("JSON-RPC only", { status: 405 })
-    }
     const payload = await req.json();
     const response = await server.handle(payload);
-    if (!response) {
-      return new Response(null, { status: 204 })
-    }
     return Response.json(response);
-  }
-})
-
-console.log("JSON-RPC running on http://localhost:4444")
+  },
+});
 ```
 
-### RPC Client
+```typescript
+// Client example
+import { JsonRpcClient } from '@asyncswap/jsonrpc';
 
-```ts
-
-import { JsonRpcClient } from "@asyncswap/jsonrpc";
-const url = "http://localhost:4444";
-const client = new JsonRpcClient(url);
-const result = await client.call("ping", []);
-console.log(result);
+const client = new JsonRpcClient('http://localhost:4444');
+const result = await client.call('add', [2, 3]);
+console.log(result); // 5
 ```
+
+## License
+
+MIT
