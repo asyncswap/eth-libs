@@ -1,5 +1,16 @@
 # @asyncswap/jsonrpc
 
+## 0.5.0
+
+### Minor Changes
+
+- 7e8300c: changes api for jsonrpc contruction
+
+### Patch Changes
+
+- 43de065: update docs
+- 7126afa: add `otherHeaders` to inializedClient calls
+
 ## 0.3.1
 
 ### Patch Changes

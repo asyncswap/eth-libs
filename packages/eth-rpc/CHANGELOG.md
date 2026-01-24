@@ -1,5 +1,18 @@
 # @asyncswap/eth-rpc
 
+## 0.5.0
+
+### Minor Changes
+
+- fd79ea3: updates api for eth-client and adds flasbots methods and headers
+
+### Patch Changes
+
+- Updated dependencies [43de065]
+- Updated dependencies [7e8300c]
+- Updated dependencies [7126afa]
+  - @asyncswap/jsonrpc@0.5.0
+
 ## 0.3.0
 
 ### Minor Changes
