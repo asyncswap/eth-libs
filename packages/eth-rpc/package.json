@@ -41,6 +41,6 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@asyncswap/jsonrpc": "^0.3.0"
+		"@asyncswap/jsonrpc": "^0.4.0"
 	}
 }
