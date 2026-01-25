@@ -2,8 +2,8 @@ import { JsonRpcServer } from "./src";
 
 const server = new JsonRpcServer();
 
-server.register("add", ([a, b]: [number, number]) => a + b);
-server.register("ping", () => "pong");
+server.register("add", async ([a, b]: [number, number]) => a + b);
+server.register("ping", async () => "pong");
 
 Bun.serve({
 	port: 4444,
