@@ -1,5 +1,11 @@
 # @asyncswap/jsonrpc
 
+## 0.4.4
+
+### Patch Changes
+
+- f7d28d9: (fix): error code now generated in build
+
 ## 0.4.3
 
 ### Patch Changes

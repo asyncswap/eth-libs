@@ -1,5 +1,13 @@
 # @asyncswap/eth-rpc
 
+## 0.4.4
+
+### Patch Changes
+
+- b2b631f: deprecated `EthExecutionClien` use `ExecutionClient`
+- Updated dependencies [f7d28d9]
+  - @asyncswap/jsonrpc@0.4.4
+
 ## 0.4.3
 
 ### Patch Changes
