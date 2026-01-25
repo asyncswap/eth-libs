@@ -19,7 +19,9 @@ export abstract class BaseClient<MethodsSpec extends RpcSpecBase> {
 
 				const method = prop as keyof MethodsSpec;
 
-				return (...params: MethodsSpec[typeof method]["params"]) =>
+				return (
+					...params: MethodsSpec[typeof method]["params"]
+				): MethodsSpec[typeof method]["result"] =>
 					this.rpc.call(this.rpc.buildRequest(method, params), this.headers);
 			},
 		});
