@@ -1,5 +1,11 @@
 # @asyncswap/jsonrpc
 
+## 0.4.7
+
+### Patch Changes
+
+- 882f94f: new params typing
+
 ## 0.4.6
 
 ### Patch Changes

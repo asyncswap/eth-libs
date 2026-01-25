@@ -1,5 +1,13 @@
 # @asyncswap/eth-rpc
 
+## 0.4.5
+
+### Patch Changes
+
+- 0d1be5d: upgrade with parameter typing
+- Updated dependencies [882f94f]
+  - @asyncswap/jsonrpc@0.4.7
+
 ## 0.4.4
 
 ### Patch Changes
