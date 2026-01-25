@@ -13,7 +13,7 @@ bun add @asyncswap/engine-rpc
 ### Engine API Client
 
 ```typescript
-import { EngineExecutionClient } from '@asyncswap/eth-rpc';
+import { EngineExecutionClient } from '@asyncswap/engine-rpc';
 
 const engineUrl = 'http://localhost:8551';
 const engine = new EngineExecutionClient(engineUrl, process.env.JWT_TOKEN!);
