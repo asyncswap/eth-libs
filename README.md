@@ -77,10 +77,10 @@ console.log('Balance:', balance);
 ### Flashbots Client API
 
 ```ts
-import { EthFlashbotsClient } from "@asyncswap/eth-rpc";
+import { FlashbotsClient } from "@asyncswap/eth-rpc";
 
 const rpc = "https://relay.flashbots.net";
-const client = new EthFlashbotsClient(rpc);
+const client = new FlashbotsClient(rpc);
 ```
 
 ### Engine Api
