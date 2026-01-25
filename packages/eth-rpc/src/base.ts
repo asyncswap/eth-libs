@@ -14,7 +14,20 @@ export abstract class BaseClient<MethodsSpec extends RpcSpecBase> {
 		this.rpc = new JsonRpcClient(url);
 
 		return new Proxy(this, {
-			get: (_: this, prop: string | symbol) => {
+			get: (target: this, prop: string | symbol, receiver) => {
+				// let real properties / methods through
+				if (prop in target) {
+					const value = Reflect.get(target, prop, receiver);
+					if (typeof value === "function") {
+						return (...args: any[]) => {
+							const result = value.apply(target, args);
+							// if method returns target, return proxy instead
+							return result === target ? receiver : result;
+						};
+					}
+					return value;
+				}
+				// dynamic rpc
 				if (typeof prop !== "string") return undefined;
 
 				const method = prop as keyof MethodsSpec;
