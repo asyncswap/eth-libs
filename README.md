@@ -1,8 +1,6 @@
 # Ethereum Client Libs
 
-## Core
-
-### [`@asyncswap/jsonrpc`](./packages/jsonrpc)
+## [`@asyncswap/jsonrpc`](./packages/jsonrpc)
 
 A minimal jsonrpc spec implementation.
 
@@ -51,7 +49,7 @@ const result = await client.call(
 console.log(result)
 ```
 
-### [`@asyncswap/eth-rpc`](./packages/eth-rpc)
+## [`@asyncswap/eth-rpc`](./packages/eth-rpc)
 
 A library for ethereum execution clients apis.
 
@@ -74,10 +72,24 @@ const balance = await eth.eth_getBalance(
 console.log('Balance:', balance);
 ```
 
+### Engine Api
+
+```ts
+import { EngineExecutionClient } from "@asyncswap/eth-rpc";
+
+const engineUrl = "https://localhost:8551";
+const engine = new EngineExecutionClient(engineUrl, process.env.JWT_TOKEN!);
+const payload = engine.engine_getPayloadV1("0x1");
+
+console.log(payload);
+```
+
+## [`@asyncswap/flashbots-rpc`](./packages/flashbots-rpc)
+
 ### Flashbots Client API
 
 ```ts
-import { FlashbotsClient } from "@asyncswap/eth-rpc";
+import { FlashbotsClient } from "@asyncswap/flashbots-rpc";
 
 const rpc = "https://relay.flashbots.net";
 const client = new FlashbotsClient(rpc);
@@ -96,16 +108,4 @@ client
   "X-Flashbots-Signature": `0x<sender>:0x<signature>`,
  })
  .eth_sendBundle(bundle);
-```
-
-### Engine Api
-
-```ts
-import { EngineExecutionClient } from "@asyncswap/eth-rpc";
-
-const engineUrl = "https://localhost:8551";
-const engine = new EngineExecutionClient(engineUrl, process.env.JWT_TOKEN!);
-const payload = engine.engine_getPayloadV1("0x1");
-
-console.log(payload);
 ```

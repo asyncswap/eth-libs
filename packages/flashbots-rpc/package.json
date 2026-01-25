@@ -1,0 +1,46 @@
+{
+  "name": "@asyncswap/flashbots-rpc",
+  "description": "A library for flashbots relay rpc.",
+  "author": "Meek Msaki",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "flashbots",
+    "ethereum",
+    "relay",
+    "mev",
+    "json-rpc"
+  ],
+  "homepage": "https://github.com/asyncswap/eth-libs/tree/main/packages/flashbots-rpc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asyncswap/eth-libs.git",
+    "directory": "packages/flashbots-rpc"
+  },
+  "bugs": {
+    "url": "https://github.com/asyncswap/eth-libs/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "publish": "bun run build && bun publish --access public",
+    "format": "bun biome format --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@asyncswap/eth-rpc": "^0.4.6"
+  }
+}
