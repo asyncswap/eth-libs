@@ -1,5 +1,11 @@
 # @asyncswap/engine-rpc
 
+## 0.0.2
+
+### Patch Changes
+
+- 863d9b8: udpate example
+
 ## 0.0.1
 
 ### Patch Changes
