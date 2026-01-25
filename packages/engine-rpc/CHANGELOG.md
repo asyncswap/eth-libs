@@ -1,5 +1,11 @@
 # @asyncswap/engine-rpc
 
+## 0.0.3
+
+### Patch Changes
+
+- 494a28f: update package location
+
 ## 0.0.2
 
 ### Patch Changes
