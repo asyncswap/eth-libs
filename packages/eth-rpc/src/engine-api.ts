@@ -1,320 +1,37 @@
 import { JsonRpcClient } from "@asyncswap/jsonrpc";
 
+export type EngineRpcMethods<
+	T extends Record<string, { params: unknown[]; result: unknown }>,
+> = {
+		[K in keyof T]: (...params: T[K]["params"]) => Promise<T[K]["result"]>;
+	};
+
 export class EngineExecutionClient {
-	private client: JsonRpcClient;
-	private headers: Record<string, string>;
+	rpc: JsonRpcClient;
+	headers: Record<string, string>;
 
 	constructor(url: string, jwt_token: string) {
 		this.headers = {
 			Authorization: `Bearer ${jwt_token}`,
 		};
-		this.client = new JsonRpcClient(url);
+		this.rpc = new JsonRpcClient(url);
+
+		return new Proxy(this, {
+			get: (_, method: string) => {
+				return (...params: unknown[]) =>
+					this.rpc.call(this.rpc.buildRequest(method, params), this.headers);
+			},
+		});
 	}
 
-	// eth/transaction
-	async eth_sendRawTransaction(transaction: Bytes): Promise<Hash32> {
-		return await this.client.call(
-			EngineMethods.eth_sendRawTransaction,
-			[transaction],
-			this.headers,
-		);
-	}
-	// eth/state
-	async eth_getCode(
-		address: Address,
-		block: BlockNumberOrTagOrHash,
-	): Promise<Bytes> {
-		return await this.client.call(
-			EngineMethods.eth_getCode,
-			[address, block],
-			this.headers,
-		);
-	}
-	async eth_getLogs(filter: Filter): Promise<FilterResults> {
-		return await this.client.call(
-			EngineMethods.eth_getLogs,
-			[filter],
-			this.headers,
-		);
-	}
-	// eth/execute
-	async eth_call(
-		transaction: GenericTransaction,
-		block: BlockNumberOrTagOrHash,
-	): Promise<Bytes> {
-		return this.client.call(
-			EngineMethods.eth_call,
-			[transaction, block],
-			this.headers,
-		);
-	}
-	// eth/client
-	async eth_chainId(): Promise<Uint> {
-		return await this.client.call(EngineMethods.eth_chainId, [], this.headers);
-	}
-	async eth_syncing(): Promise<SyncingStatus> {
-		return await this.client.call(EngineMethods.eth_syncing, [], this.headers);
-	}
-	async eth_blockNumber(): Promise<Uint> {
-		return await this.client.call(
-			EngineMethods.eth_blockNumber,
-			[],
-			this.headers,
-		);
-	}
-	// eth/block
-	async eth_getBlockByHash(
-		blockHash: Hash32,
-		hydratedTransactions: boolean,
-	): Promise<NotFound | Block> {
-		return await this.client.call(
-			EngineMethods.eth_getBlockByHash,
-			[blockHash, hydratedTransactions],
-			this.headers,
-		);
-	}
-	async eth_getBlockByNumber(
-		block: BlockNumberOrTag,
-		hydratedTransactions: boolean,
-	): Promise<NotFound | Block> {
-		return await this.client.call(
-			EngineMethods.eth_getBlockByNumber,
-			[block, hydratedTransactions],
-			this.headers,
-		);
-	}
-	// engine/blob
-	async engine_getBlobsV1(
-		blobedVersionedHashes: Hash32[],
-	): Promise<BlobAndProofV1[]> {
-		return await this.client.call(
-			EngineMethods.engine_getBlobsV1,
-			[blobedVersionedHashes],
-			this.headers,
-		);
-	}
-	async engine_getBlobsV2(
-		blobedVersionedHashes: Hash32[],
-	): Promise<BlobAndProofV2[]> {
-		return await this.client.call(
-			EngineMethods.engine_getBlobsV2,
-			[blobedVersionedHashes],
-			this.headers,
-		);
-	}
-	async engine_getBlobsV3(
-		blobedVersionedHashes: Hash32[],
-	): Promise<Array<BlobAndProofV2[] | null> | null> {
-		return await this.client.call(
-			EngineMethods.engine_getBlobsV3,
-			[blobedVersionedHashes],
-			this.headers,
-		);
-	}
-	// engine/capabilities
-	async engine_exchangeCapabilities(
-		consensusClientMethods: string[],
-	): Promise<string[]> {
-		return await this.client.call(
-			EngineMethods.engine_exchangeCapabilities,
-			[consensusClientMethods],
-			this.headers,
-		);
-	}
-	// engine/forkchoice
-	async engine_forkchoiceUpdatedV1(
-		forkchoiceState: ForkchoiceStateV1,
-		payloadAttribute: PayloadAttributesV1,
-	): Promise<ForkchoiceUpdatedResponseV1> {
-		return await this.client.call(
-			EngineMethods.engine_forkchoiceUpdatedV1,
-			[forkchoiceState, payloadAttribute],
-			this.headers,
-		);
-	}
-	async engine_forkchoiceUpdatedV2(
-		forkchoiceState: ForkchoiceStateV1,
-		payloadAttribute: PayloadAttributesV2,
-	): Promise<ForkchoiceUpdatedResponseV1> {
-		return await this.client.call(
-			EngineMethods.engine_forkchoiceUpdatedV2,
-			[forkchoiceState, payloadAttribute],
-			this.headers,
-		);
-	}
-	async engine_forkchoiceUpdatedV3(
-		forkchoiceState: ForkchoiceStateV1,
-		payloadAttribute: PayloadAttributesV3,
-	): Promise<ForkchoiceUpdatedResponseV1> {
-		return await this.client.call(
-			EngineMethods.engine_forkchoiceUpdatedV3,
-			[forkchoiceState, payloadAttribute],
-			this.headers,
-		);
-	}
-	// engine/payload
-	async engine_newPayloadV1(
-		executionPayload: ExecutionPayloadV1,
-	): Promise<PayloadStatusV1> {
-		return await this.client.call(
-			EngineMethods.engine_newPayloadV1,
-			[executionPayload],
-			this.headers,
-		);
-	}
-	async engine_newPayloadV2(
-		executionPayload: ExecutionPayloadV1 | ExecutionPayloadV2,
-	): Promise<PayloadStatusNoInvalidBlockHash> {
-		return await this.client.call(
-			EngineMethods.engine_newPayloadV2,
-			[executionPayload],
-			this.headers,
-		);
-	}
-	async engine_newPayloadV3(
-		executionPayload: ExecutionPayloadV3,
-		expectedBlobVersionedHashes: Hash32[],
-		rootOfTheParentBeaconBlock: Hash32,
-	): Promise<PayloadStatusNoInvalidBlockHash> {
-		return await this.client.call(
-			EngineMethods.engine_newPayloadV3,
-			[
-				executionPayload,
-				expectedBlobVersionedHashes,
-				rootOfTheParentBeaconBlock,
-			],
-			this.headers,
-		);
-	}
-	async engine_newPayloadV4(
-		executionPayload: ExecutionPayloadV3,
-		expectedBlobVersionedHashes: Hash32[],
-		rootOfTheParentBeaconBlock: Hash32,
-		executionRequests: Bytes[],
-	): Promise<PayloadStatusNoInvalidBlockHash> {
-		return await this.client.call(
-			EngineMethods.engine_newPayloadV4,
-			[
-				executionPayload,
-				expectedBlobVersionedHashes,
-				rootOfTheParentBeaconBlock,
-				executionRequests,
-			],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV1(payloadId: Bytes8): Promise<ExecutionPayloadV1> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV1,
-			[payloadId],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV2(payloadId: Bytes8): Promise<{
-		executionPayload: ExecutionPayloadV1 | ExecutionPayloadV2;
-		blockValue: Uint256;
-	}> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV2,
-			[payloadId],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV3(payloadId: Bytes8): Promise<{
-		executionPayload: ExecutionPayloadV3;
-		blockValue: Uint256;
-		blobsBundle: BlobsBundleV1;
-		shouldOverrideBuilder: boolean;
-	}> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV3,
-			[payloadId],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV4(payloadId: Bytes8): Promise<{
-		executionPayload: ExecutionPayloadV3;
-		blockValue: Uint256;
-		blobsBundle: BlobsBundleV1;
-		shouldOverrideBuilder: boolean;
-		executionRequests: Bytes[];
-	}> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV4,
-			[payloadId],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV5(payloadId: Bytes8): Promise<{
-		executionPayload: ExecutionPayloadV3;
-		blockValue: Uint256;
-		blobsBundle: BlobsBundleV2;
-		shouldOverrideBuilder: boolean;
-		executionRequests: Bytes[];
-	}> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV5,
-			[payloadId],
-			this.headers,
-		);
-	}
-	async engine_getPayloadBodiesByHashV1(
-		arrayOfBlockHashes: Hash32[],
-	): Promise<ExecutionPayloadBodyV1[]> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadBodiesByHashV1,
-			[arrayOfBlockHashes],
-			this.headers,
-		);
-	}
-	async engine_getPayloadBodiesByRangeV1(
-		startingBlockNumber: Uint64,
-		numberOfBlocksToReturn: Uint64,
-	): Promise<ExecutionPayloadBodyV1[]> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadBodiesByRangeV1,
-			[startingBlockNumber, numberOfBlocksToReturn],
-			this.headers,
-		);
-	}
-	async engine_newPayloadV5(
-		executionPayload: ExecutionPayloadV4,
-		expectedBlobVersionedHashes: Hash32[],
-		parentBeaconBlockRoot: Hash32,
-		executionRequests: Bytes[],
-	): Promise<PayloadStatusNoInvalidBlockHash> {
-		return await this.client.call(
-			EngineMethods.engine_newPayloadV5,
-			[
-				executionPayload,
-				expectedBlobVersionedHashes,
-				parentBeaconBlockRoot,
-				executionRequests,
-			],
-			this.headers,
-		);
-	}
-	async engine_getPayloadV6(payloadId: Bytes8): Promise<{
-		executionPayload: ExecutionPayloadV4;
-		blockValue: Uint256;
-		blobsBundle: BlobsBundleV2;
-		shouldOverrideBuilder: boolean;
-		executionRequests: Bytes[];
-	}> {
-		return await this.client.call(
-			EngineMethods.engine_getPayloadV6,
-			[payloadId],
-			this.headers,
-		);
-	}
-	// engine/transition-configuration
-	async engine_exchangeTransitionConfigurationV1(
-		consensusClientConfiguration: TransitionConfigurationV1,
-	): Promise<TransitionConfigurationV1> {
-		return await this.client.call(
-			EngineMethods.engine_exchangeTransitionConfigurationV1,
-			[consensusClientConfiguration],
-			this.headers,
-		);
+	setHeaders(headers: Record<string, string>) {
+		this.headers = {
+			...this.headers,
+			...headers,
+		};
+		return this;
 	}
 }
+
+export interface EngineExecutionClient
+	extends EngineRpcMethods<EngineMethodsSpec> { }

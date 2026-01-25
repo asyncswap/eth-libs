@@ -29,10 +29,10 @@ eth.eth_getTransactionCount("0x34", "safe");
 ### Flashbots Client API
 
 ```ts
-import { EthFlashbotsClient } from "@asyncswap/eth-rpc";
+import { FlashbotsClient } from "@asyncswap/eth-rpc";
 
 const rpc = "https://relay.flashbots.net";
-const client = new EthFlashbotsClient(rpc);
+const client = new FlashbotsClient(rpc);
 ```
 
 ### Engine API Client
@@ -46,10 +46,10 @@ const payload = engine.engine_getPayloadV1("0x1");
 
 console.log(payload);
 
-import { EthFlashbotsClient } from '@asyncswap/eth-rpc';
+import { FlashbotsClient } from '@asyncswap/eth-rpc';
 
 const rpc = 'https://relay.flashbots.net';
-const client = new EthFlashbotsClient(rpc);
+const client = new FlashbotsClient(rpc);
 ```
 
 ## Error Handling

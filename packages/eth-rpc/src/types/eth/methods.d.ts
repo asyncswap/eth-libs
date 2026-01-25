@@ -1,55 +1,108 @@
 declare global {
-	export enum EthMethods {
-		// eth/transaction
-		eth_getTransactionByHash = "eth_getTransactionByHash",
-		eth_getTransactionByBlockHashAndIndex = "eth_getTransactionByBlockHashAndIndex",
-		eth_getTransactionReceipt = "eth_getTransactionReceipt",
+	export type EthMethodsSpec = {
+		eth_getTransactionByHash: {
+			params: [Hash32];
+			result: NotFound | TransactionInfo;
+		};
+		eth_getTransactionByBlockHashAndIndex: {
+			params: [Hash32, Uint];
+			result: NotFound | TransactionInfo;
+		};
+		eth_getTransactionReceipt: {
+			params: [Hash32];
+			result: NotFound | ReceiptInfo;
+		};
 		// eth/submit
-		eth_sendTransaction = "eth_sendTransaction",
-		eth_sendRawTransaction = "eth_sendRawTransaction",
+		eth_sendTransaction: { params: [GenericTransaction]; result: Hash32 };
+		eth_sendRawTransaction: { params: [Bytes]; result: Hash32 };
 		// eth/state
-		eth_getBalance = "eth_getBalance",
-		eth_getStorageAt = "eth_getStorageAt",
-		eth_getTransactionCount = "eth_getTransactionCount",
-		eth_getCode = "eth_getCode",
-		eth_getProof = "eth_getProof",
+		eth_getBalance: {
+			params: [Address, BlockNumberOrTagOrHash];
+			result: Uint;
+		};
+		eth_getStorageAt: {
+			params: [Address, Bytes32, BlockNumberOrTagOrHash];
+			result: Bytes;
+		};
+		eth_getTransactionCount: {
+			params: [Address, BlockNumberOrTagOrHash];
+			result: Uint;
+		};
+		eth_getCode: {
+			params: [Address, BlockNumberOrTagOrHash];
+			result: Bytes;
+		};
+		eth_getProof: {
+			params: [Address, Bytes32[], BlockNumberOrTagOrHash];
+			result: AccountProof;
+		};
 		// eth/sign
-		eth_sign = "eth_sign",
-		eth_signTransaction = "eth_signTransaction",
+		eth_sign: { params: [Address, Bytes]; result: Bytes65 };
+		eth_signTransaction: { params: [GenericTransaction]; result: Bytes };
 		// eth/filter
-		eth_newFilter = "eth_newFilter",
-		eth_newBlockFilter = "eth_newBlockFilter",
-		eth_newPendingTransactionFilter = "eth_newPendingTransactionFilter",
-		eth_uninstallFilter = "eth_uninstallFilter",
-		eth_getFilterChanges = "eth_getFilterChanges",
-		eth_getFilterLogs = "eth_getFilterLogs",
-		eth_getLogs = "eth_getLogs",
+		eth_newFilter: { params: [Filter]; result: Uint };
+		eth_newBlockFilter: { params: []; result: Uint };
+		eth_newPendingTransactionFilter: { params: []; result: Uint };
+		eth_uninstallFilter: { params: []; result: Uint };
+		eth_getFilterChanges: { params: []; result: FilterResults };
+		eth_getFilterLogs: { params: [Uint]; result: FilterResults };
+		eth_getLogs: { params: [Filter]; result: FilterResults };
 		// eth/feeMarket
-		eth_gasPrice = "eth_gasPrice",
-		eth_blobBaseFee = "eth_blobBaseFee",
-		eth_maxPriorityFeePerGas = "eth_maxPriorityFeePerGas",
-		eth_feeHistory = "eth_feeHistory",
+		eth_gasPrice: { params: []; result: Uint };
+		eth_blobBaseFee: { params: []; result: Uint };
+		eth_maxPriorityFeePerGas: { params: []; result: Uint };
+		eth_feeHistory: {
+			params: [Uint, BlockNumberOrTag, number[]];
+			result: FeeHistoryResults;
+		};
 		// eth/execute
-		eth_call = "eth_call",
-		eth_estimateGas = "eth_estimateGas",
-		eth_createAccessList = "eth_createAccessList",
-		eth_simulateV1 = "eth_simulateV1",
+		eth_call: {
+			params: [GenericTransaction, BlockNumberOrTagOrHash];
+			result: Bytes;
+		};
+		eth_estimateGas: {
+			params: [GenericTransaction, BlockNumberOrTag];
+			result: Uint;
+		};
+		eth_createAccessList: {
+			params: [GenericTransaction, BlockNumberOrTag];
+			result: AccessListResult;
+		};
+		eth_simulateV1: {
+			params: [EthSimulatePayload, BlockNumberOrTagOrHash];
+			result: EthSimulateResult;
+		};
 		// eth/client
-		eth_chainId = "eth_chainId",
-		eth_syncing = "eth_syncing",
-		eth_coinbase = "eth_coinbase",
-		eth_accounts = "eth_accounts",
-		eth_blockNumber = "eth_blockNumber",
-		net_version = "net_version",
+		eth_chainId: { params: []; result: Uint };
+		eth_syncing: { params: []; result: SyncingStatus };
+		eth_coinbase: { params: []; result: Address };
+		eth_accounts: { params: []; result: Addresses };
+		eth_blockNumber: { params: []; result: Uint };
+		net_version: { params: []; result: UintDecimal };
 		// eth/block
-		eth_getBlockByHash = "eth_getBlockByHash",
-		eth_getBlockByNumber = "eth_getBlockByNumber",
-		eth_getBlockTransactionCountByHash = "eth_getBlockTransactionCountByHash",
-		eth_getBlockTransactionCountByNumber = "eth_getBlockTransactionCountByNumber",
-		eth_getUncleCountByBlockHash = "eth_getUncleCountByBlockHash",
-		eth_getUncleCountByBlockNumber = "eth_getUncleCountByBlockNumber",
-		eth_getBlockReceipts = "eth_getBlockReceipts",
-	}
+		eth_getBlockByHash: { params: [Hash32, boolean]; result: NotFound | Block };
+		eth_getBlockByNumber: {
+			params: [BlockNumberOrTag, boolean];
+			result: NotFound | Block;
+		};
+		eth_getBlockTransactionCountByHash: {
+			params: [Hash32];
+			result: NotFound | Uint;
+		};
+		eth_getBlockTransactionCountByNumber: {
+			params: [BlockNumberOrTag];
+			result: NotFound | Uint;
+		};
+		eth_getUncleCountByBlockHash: { params: [Hash32]; result: NotFound | Uint };
+		eth_getUncleCountByBlockNumber: {
+			params: [BlockNumberOrTag];
+			result: NotFound | Uint;
+		};
+		eth_getBlockReceipts: {
+			params: [BlockNumberOrTagOrHash];
+			result: NotFound | ReceiptInfo[];
+		};
+	} & DebugMethods;
 }
 
 export { };

@@ -1,11 +1,11 @@
 declare global {
-	export enum DebugMethods {
-		debug_getRawHeader = "debug_getRawHeader",
-		debug_getRawBlock = "debug_getRawBlock",
-		debug_getRawTransaction = "debug_getRawTransaction",
-		debug_getRawReceipts = "debug_getRawReceipts",
-		debug_getBadBlocks = "debug_getBadBlocks",
-	}
+	export type DebugMethods = {
+		debug_getRawHeader: { params: [BlockNumberOrTag]; result: Bytes };
+		debug_getRawBlock: { params: [BlockNumberOrTag]; result: Bytes };
+		debug_getRawTransaction: { params: [Hash32]; result: Bytes };
+		debug_getRawReceipts: { params: [BlockNumberOrTag]; result: Bytes[] };
+		debug_getBadBlocks: { params: []; result: BadBlock[] };
+	};
 }
 
 export { };

@@ -18,7 +18,9 @@ const payload = engine.engine_getPayloadV1("0x1");
 
 console.log(payload);
 
-import { EthFlashbotsClient } from "./src";
+import { FlashbotsClient } from "./src";
 
 const rpc = "https://relay.flashbots.net";
-const client = new EthFlashbotsClient(rpc);
+const client = new FlashbotsClient(rpc);
+const body = client.rpc.buildRequest("eth_sendBundle", []);
+client.eth_accounts();
