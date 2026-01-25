@@ -111,3 +111,29 @@ const result = await client
  .eth_sendBundle(bundle);
 console.log(result)
 ```
+
+## Development
+
+### Semver Package Versioning
+
+To add semver versioning for major, minor or patches run
+
+```sh
+bun changeset
+```
+
+Apply versions
+
+```sh
+bun changeset version
+```
+
+> This will bump all the versions automatically and auto-update dependencies.
+
+### Pusblish
+
+Run
+
+```sh
+bun publish:jsonrpc && bun publish:eth-rpc
+```
