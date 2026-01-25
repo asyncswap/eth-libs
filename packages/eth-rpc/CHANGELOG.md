@@ -1,5 +1,13 @@
 # @asyncswap/eth-rpc
 
+## 0.4.8
+
+### Patch Changes
+
+- cad9042: minimal eth rpc client
+
+  - ported engine api to different package
+
 ## 0.4.7
 
 ### Patch Changes
