@@ -6,7 +6,7 @@ export type EthRpcMethods<
 		[K in keyof T]: (...params: T[K]["params"]) => Promise<T[K]["result"]>;
 	};
 
-export class EthExecutionClient {
+export class ExecutionClient {
 	rpc: JsonRpcClient;
 	headers: Record<string, string> = {};
 
@@ -30,4 +30,10 @@ export class EthExecutionClient {
 	}
 }
 
-export interface EthExecutionClient extends EthRpcMethods<EthMethodsSpec> { }
+export interface ExecutionClient extends EthRpcMethods<EthMethodsSpec> { }
+
+/**
+ * @deprecated Use `ExecutionClient` instead.
+ * This method will be removed in v0.5.0.
+ */
+export class EthExecutionClient extends ExecutionClient { }
