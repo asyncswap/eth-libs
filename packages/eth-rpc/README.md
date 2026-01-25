@@ -35,7 +35,6 @@ const rpc = "https://relay.flashbots.net";
 const client = new FlashbotsClient(rpc);
 const bundle = {
  txs: ["0x123abc", "0x456def..."] as Hex[],
-
  blockNumber: "0xb63dcd" as Hex,
  minTimestamp: 0,
  maxTimestamp: 1615920932,
