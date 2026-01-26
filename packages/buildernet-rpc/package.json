@@ -1,5 +1,5 @@
 {
-	"name": "@asyncswaprpc",
+	"name": "@asyncswap/buildernet-rpc",
 	"description": "A library for flashbots buildernet JSON-RPC api.",
 	"author": "Meek Msaki",
 	"version": "0.0.0",
