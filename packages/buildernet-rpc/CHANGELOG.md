@@ -1,5 +1,11 @@
 # @asyncswap/buildernet-rpc
 
+## 0.0.7
+
+### Patch Changes
+
+- 25f19df: fixing package dist
+
 ## 0.0.6
 
 ### Patch Changes
