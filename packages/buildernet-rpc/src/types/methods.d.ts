@@ -18,7 +18,7 @@ declare global {
 			result: BuildernetGetFeeRefundsResult;
 		};
 		buildernet_getFeeRefundsByBlock: {
-			params: [{ block_number: Hex }];
+			params: [{ blockNumber: Hex }];
 			result: BuildernetGetFeeRefundsResult;
 		};
 		buildernet_getFeeRefundsByBundle: {
