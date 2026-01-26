@@ -1,11 +1,5 @@
 # Eth Client Libs
 
-1. [jsonrpc](./jsonrpc)
-1. [eth-rpc](./eth-rpc)
-1. [engine-rpc](./engine-rpc)
-1. [flashbots-rpc](./flashbots-rpc)
-1. [buildernet-rpc](./buildernet-rpc)
-
 ## [`@asyncswap/jsonrpc`](./packages/jsonrpc)
 
 A minimal jsonrpc spec implementation.
