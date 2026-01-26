@@ -28,6 +28,6 @@
 		"noUnusedParameters": false,
 		"noPropertyAccessFromIndexSignature": false
 	},
-	"include": ["src/**/*", "global.d.ts"],
+	"include": ["src/**/*"],
 	"exclude": ["example.ts"]
 }
