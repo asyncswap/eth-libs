@@ -27,7 +27,7 @@ const body = client.rpc.buildRequest("eth_sendBundle", [bundle]);
 // const signature = wallet.sign(body)
 // const sender = wallet.address
 const result = await client
- .setHeaders({
+ .withHeaders({
   "X-Flashbots-Signature": `0x<sender>:0x<signature>`,
  })
  .eth_sendBundle(bundle);
