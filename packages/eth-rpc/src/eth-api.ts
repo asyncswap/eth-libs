@@ -1,4 +1,4 @@
-import { BaseClient } from "./base";
+import { BaseClient } from "@asyncswap/jsonrpc";
 
 export class ExecutionClient extends BaseClient<EthMethodsSpec> {
 	constructor(url: string) {
