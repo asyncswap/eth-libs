@@ -6,7 +6,7 @@ A TypeScript client for flashbots relay rpc.
 
 ```sh
 bun add @asyncswap/flashbots-rpc
-# Install to resolve shared types like Hex etc.
+# Must install to resolve types
 bun add -D @asyncswap/eth-types 
 ```
 

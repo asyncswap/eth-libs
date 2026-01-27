@@ -6,7 +6,7 @@ A library for Ethereum engine api JSON-RPC spec.
 
 ```
 bun add @asyncswap/engine-rpc 
-# Install to resolve types shared types like Hex etc.
+# Must install to resolve types
 bun add -D @asyncswap/eth-types 
 ```
 

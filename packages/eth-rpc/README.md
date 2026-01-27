@@ -6,7 +6,7 @@ A comprehensive TypeScript client for Ethereum execution and engine APIs.
 
 ```bash
 bun add @asyncswap/eth-rpc
-# Install to resolve shared types like Hex etc.
+# Must install to resolve types
 bun add -D @asyncswap/eth-types 
 ```
 
