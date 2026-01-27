@@ -1,4 +1,5 @@
 import { BaseClient } from "@asyncswap/jsonrpc";
+import type { EngineMethodsSpec } from "./types";
 
 export class EngineExecutionClient extends BaseClient<EngineMethodsSpec> {
   constructor(url: string, jwt_token: string) {
