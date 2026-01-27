@@ -1,5 +1,11 @@
 # @asyncswap/flashbots-rpc
 
+## 0.0.9
+
+### Patch Changes
+
+- d2c6511: use lateset jsonrpc version
+
 ## 0.0.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @asyncswap/engine-rpc
 
+## 0.0.11
+
+### Patch Changes
+
+- d2c6511: use lateset jsonrpc version
+
 ## 0.0.10
 
 ### Patch Changes

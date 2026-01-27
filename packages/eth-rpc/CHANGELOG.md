@@ -1,5 +1,11 @@
 # @asyncswap/eth-rpc
 
+## 0.4.16
+
+### Patch Changes
+
+- d2c6511: use lateset jsonrpc version
+
 ## 0.4.15
 
 ### Patch Changes
