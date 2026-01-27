@@ -6,6 +6,8 @@ A TypeScript client for Flashbots buildernet JSON-RPC api.
 
 ```sh
 bun add @asyncswap/buildernet-rpc
+# Install to resolve shared types like Hex etc.
+bun add -D @asyncswap/eth-types 
 ```
 
 ## Quick Start
