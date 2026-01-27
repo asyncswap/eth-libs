@@ -20,9 +20,10 @@
     },
     "packages/buildernet-rpc": {
       "name": "@asyncswap/buildernet-rpc",
-      "version": "0.0.3",
+      "version": "0.0.7",
       "dependencies": {
-        "@asyncswap/jsonrpc": "^0.4.8",
+        "@asyncswap/eth-types": "^0.0.0",
+        "@asyncswap/jsonrpc": "^0.4.12",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -33,9 +34,10 @@
     },
     "packages/engine-rpc": {
       "name": "@asyncswap/engine-rpc",
-      "version": "0.0.4",
+      "version": "0.0.8",
       "dependencies": {
-        "@asyncswap/jsonrpc": "^0.4.8",
+        "@asyncswap/eth-types": "^0.0.0",
+        "@asyncswap/jsonrpc": "^0.4.12",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -46,9 +48,23 @@
     },
     "packages/eth-rpc": {
       "name": "@asyncswap/eth-rpc",
-      "version": "0.4.9",
+      "version": "0.4.13",
       "dependencies": {
-        "@asyncswap/jsonrpc": "^0.4.7",
+        "@asyncswap/eth-types": "^0.0.0",
+        "@asyncswap/jsonrpc": "^0.4.12",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
+    "packages/eth-types": {
+      "name": "@asyncswap/eth-types",
+      "version": "0.0.0",
+      "dependencies": {
+        "@asyncswap/jsonrpc": "^0.4.12",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -59,9 +75,10 @@
     },
     "packages/flashbots-rpc": {
       "name": "@asyncswap/flashbots-rpc",
-      "version": "0.0.2",
+      "version": "0.0.6",
       "dependencies": {
-        "@asyncswap/jsonrpc": "^0.4.8",
+        "@asyncswap/eth-types": "^0.0.0",
+        "@asyncswap/jsonrpc": "^0.4.12",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -72,7 +89,7 @@
     },
     "packages/jsonrpc": {
       "name": "@asyncswap/jsonrpc",
-      "version": "0.4.8",
+      "version": "0.4.12",
       "devDependencies": {
         "@types/bun": "latest",
       },
@@ -103,6 +120,8 @@
     "@asyncswap/engine-rpc": ["@asyncswap/engine-rpc@workspace:packages/engine-rpc"],
 
     "@asyncswap/eth-rpc": ["@asyncswap/eth-rpc@workspace:packages/eth-rpc"],
+
+    "@asyncswap/eth-types": ["@asyncswap/eth-types@workspace:packages/eth-types"],
 
     "@asyncswap/flashbots-rpc": ["@asyncswap/flashbots-rpc@workspace:packages/flashbots-rpc"],
 
