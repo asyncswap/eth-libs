@@ -20,12 +20,12 @@
     },
     "packages/buildernet-rpc": {
       "name": "@asyncswap/buildernet-rpc",
-      "version": "0.0.7",
+      "version": "0.0.8",
       "dependencies": {
-        "@asyncswap/eth-types": "^0.0.0",
-        "@asyncswap/jsonrpc": "^0.4.12",
+        "@asyncswap/jsonrpc": "^0.4.13",
       },
       "devDependencies": {
+        "@asyncswap/eth-types": "^0.0.1",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -34,12 +34,12 @@
     },
     "packages/engine-rpc": {
       "name": "@asyncswap/engine-rpc",
-      "version": "0.0.8",
+      "version": "0.0.9",
       "dependencies": {
-        "@asyncswap/eth-types": "^0.0.0",
-        "@asyncswap/jsonrpc": "^0.4.12",
+        "@asyncswap/jsonrpc": "^0.4.13",
       },
       "devDependencies": {
+        "@asyncswap/eth-types": "^0.0.1",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -48,12 +48,12 @@
     },
     "packages/eth-rpc": {
       "name": "@asyncswap/eth-rpc",
-      "version": "0.4.13",
+      "version": "0.4.14",
       "dependencies": {
-        "@asyncswap/eth-types": "^0.0.0",
-        "@asyncswap/jsonrpc": "^0.4.12",
+        "@asyncswap/jsonrpc": "^0.4.13",
       },
       "devDependencies": {
+        "@asyncswap/eth-types": "^0.0.1",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -62,9 +62,9 @@
     },
     "packages/eth-types": {
       "name": "@asyncswap/eth-types",
-      "version": "0.0.0",
+      "version": "0.0.1",
       "dependencies": {
-        "@asyncswap/jsonrpc": "^0.4.12",
+        "@asyncswap/jsonrpc": "^0.4.13",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -75,12 +75,12 @@
     },
     "packages/flashbots-rpc": {
       "name": "@asyncswap/flashbots-rpc",
-      "version": "0.0.6",
+      "version": "0.0.7",
       "dependencies": {
-        "@asyncswap/eth-types": "^0.0.0",
-        "@asyncswap/jsonrpc": "^0.4.12",
+        "@asyncswap/jsonrpc": "^0.4.13",
       },
       "devDependencies": {
+        "@asyncswap/eth-types": "^0.0.1",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -89,7 +89,7 @@
     },
     "packages/jsonrpc": {
       "name": "@asyncswap/jsonrpc",
-      "version": "0.4.12",
+      "version": "0.4.13",
       "devDependencies": {
         "@types/bun": "latest",
       },

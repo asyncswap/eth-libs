@@ -3,6 +3,7 @@
 Typescript libraries for Ethereum client JSON-RPC api specs.
 
 - [`@asyncswap/jsonrpc`](./packages/jsonrpc)
+- [`@asyncswap/eth-types`](./packages/eth-types)
 - [`@asyncswap/eth-rpc`](./packages/eth-rpc)
 - [`@asyncswap/engine-rpc`](./packages/engine-rpc)
 - [`@asyncswap/flashbots-rpc`](./packages/flashbots-rpc)

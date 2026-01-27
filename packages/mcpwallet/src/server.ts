@@ -2,11 +2,11 @@ import { JsonRpcServer } from "@asyncswap/jsonrpc";
 
 const rpc = new JsonRpcServer();
 
-rpc.register("get_address", () => { });
+rpc.register("get_address", async () => "0x_my_address");
 
 const server = Bun.serve({
   port: 4444,
-  fetch(req) {
+  fetch() {
     return Response.json({ message: "hello world!" });
   },
 });

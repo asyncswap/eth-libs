@@ -38,13 +38,13 @@
 		"format": "bun biome format --write"
 	},
 	"devDependencies": {
-		"@types/bun": "latest"
+		"@types/bun": "latest",
+		"@asyncswap/eth-types": "^0.0.1"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@asyncswap/jsonrpc": "^0.4.13",
-		"@asyncswap/eth-types": "^0.0.1"
+		"@asyncswap/jsonrpc": "^0.4.13"
 	}
 }
