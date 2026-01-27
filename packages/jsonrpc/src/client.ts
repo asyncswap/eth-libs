@@ -2,7 +2,7 @@ import { JsonRpcErrorCode } from "./error";
 import type { JsonRpcRequest, JsonRpcResponse, SpecBase } from "./types";
 
 export class JsonRpcClient<MethodsSpec extends SpecBase> {
-	private id = 0;
+	id = 0;
 
 	constructor(private url: string) { }
 
