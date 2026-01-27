@@ -1,7 +1,7 @@
-import { BaseClient } from "@asyncswap/jsonrpc";
+import { BaseClient, type RpcSpec } from "@asyncswap/jsonrpc";
 import type { EngineMethodsSpec } from "./types";
 
-export class EngineExecutionClient extends BaseClient<EngineMethodsSpec> {
+export class EngineClient extends BaseClient<EngineMethodsSpec> {
   constructor(url: string, jwt_token: string) {
     super(url);
     this.headers = {
@@ -10,16 +10,4 @@ export class EngineExecutionClient extends BaseClient<EngineMethodsSpec> {
   }
 }
 
-export type EngineRpcMethods<
-  MethodsSpec extends Record<
-    string,
-    { params: readonly unknown[]; result: unknown }
-  >,
-> = {
-    [Method in keyof MethodsSpec]: (
-      ...params: MethodsSpec[Method]["params"]
-    ) => Promise<MethodsSpec[Method]["result"]>;
-  };
-
-export interface EngineExecutionClient
-  extends EngineRpcMethods<EngineMethodsSpec> { }
+export type EngineRpc = EngineClient & RpcSpec<EngineMethodsSpec>;

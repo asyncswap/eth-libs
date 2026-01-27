@@ -13,12 +13,12 @@ bun add @asyncswap/engine-rpc
 ### Engine API Client
 
 ```typescript
-import { EngineExecutionClient } from '@asyncswap/engine-rpc';
+import { EngineClient } from "@asyncswap/engine-rpc";
+import type { EngineRpc } from "@asyncswap/engine-rpc";
 
-const engineUrl = 'http://localhost:8551';
-const engine = new EngineExecutionClient(engineUrl, process.env.JWT_TOKEN!);
-const payload = await engine.engine_getPayloadV1("0x1");
-
+const engineUrl = "http://localhost:8551";
+const engine = new EngineClient(engineUrl, process.env.JWT_TOKEN!) as EngineRpc;
+const payload = await engine.eth_chainId();
 console.log(payload);
 ```
 
