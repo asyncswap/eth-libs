@@ -1,5 +1,15 @@
 # @asyncswap/engine-rpc
 
+## 0.0.9
+
+### Patch Changes
+
+- ddb2575: add new types lib `eth-types`
+- Updated dependencies [ddb2575]
+- Updated dependencies [97204ef]
+  - @asyncswap/eth-types@0.0.1
+  - @asyncswap/jsonrpc@0.4.13
+
 ## 0.0.8
 
 ### Patch Changes

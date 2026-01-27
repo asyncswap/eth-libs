@@ -1,5 +1,11 @@
 # @asyncswap/jsonrpc
 
+## 0.4.13
+
+### Patch Changes
+
+- ddb2575: add new types lib `eth-types`
+
 ## 0.4.12
 
 ### Patch Changes

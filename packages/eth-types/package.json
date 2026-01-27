@@ -2,7 +2,7 @@
 	"name": "@asyncswap/eth-types",
 	"description": "A library for Etherum Clients JSON-RPC types.",
 	"author": "Meek Msaki",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
@@ -43,6 +43,6 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@asyncswap/jsonrpc": "^0.4.12"
+		"@asyncswap/jsonrpc": "^0.4.13"
 	}
 }

@@ -2,7 +2,7 @@
 	"name": "@asyncswap/buildernet-rpc",
 	"description": "A library for flashbots buildernet JSON-RPC api.",
 	"author": "Meek Msaki",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
@@ -43,7 +43,7 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@asyncswap/jsonrpc": "^0.4.12",
-		"@asyncswap/eth-types": "^0.0.0"
+		"@asyncswap/jsonrpc": "^0.4.13",
+		"@asyncswap/eth-types": "^0.0.1"
 	}
 }
