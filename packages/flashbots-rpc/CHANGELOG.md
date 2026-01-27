@@ -1,5 +1,11 @@
 # @asyncswap/flashbots-rpc
 
+## 0.0.10
+
+### Patch Changes
+
+- fdc87b6: uses new version of jsonrpc
+
 ## 0.0.9
 
 ### Patch Changes
