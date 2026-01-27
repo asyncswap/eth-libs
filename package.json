@@ -8,7 +8,7 @@
 		"packages/*"
 	],
 	"scripts": {
-		"build": "bun run build:jsonrpc && bun run build:eth-rpc",
+		"build": "bun build:eth-types && bun build:jsonrpc && bun build:eth-rpc && bun build:engine-rpc && bun build:flashbots-rpc && bun build:buildernet-rpc",
 		"build:jsonrpc": "cd packages/jsonrpc && bun run build",
 		"build:eth-rpc": "cd packages/eth-rpc && bun run build",
 		"build:eth-types": "cd packages/eth-types && bun run build",
