@@ -1,5 +1,11 @@
 # @asyncswap/jsonrpc
 
+## 0.4.16
+
+### Patch Changes
+
+- 86a2ff6: increment id after call request, not in message building
+
 ## 0.4.15
 
 ### Patch Changes
