@@ -1,5 +1,11 @@
 # @asyncswap/eth-types
 
+## 0.0.4
+
+### Patch Changes
+
+- 60c1fa5: add type 4 transanstion in generic transction
+
 ## 0.0.3
 
 ### Patch Changes

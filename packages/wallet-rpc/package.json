@@ -1,29 +1,28 @@
 {
-	"name": "@asyncswap/flashbots-rpc",
-	"description": "A library for flashbots relay rpc.",
+	"name": "@asyncswap/wallet-rpc",
+	"description": "A library for ethereum wallets rpc methods.",
 	"author": "Meek Msaki",
-	"version": "0.0.10",
+	"version": "0.4.16",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"keywords": [
-		"flashbots",
+		"eth",
+		"rpc",
 		"ethereum",
-		"relay",
-		"mev",
-		"json-rpc"
+		"wallets"
 	],
 	"files": [
 		"dist",
 		"src"
 	],
-	"homepage": "https://github.com/asyncswap/eth-libs/tree/main/packages/flashbots-rpc",
+	"homepage": "https://github.com/asyncswap/eth-libs/tree/main/packages/wallet-rpc",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/asyncswap/eth-libs.git",
-		"directory": "packages/flashbots-rpc"
+		"directory": "packages/wallet-rpc"
 	},
 	"bugs": {
 		"url": "https://github.com/asyncswap/eth-libs/issues"
@@ -45,6 +44,6 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@asyncswap/jsonrpc": "^0.4.16"
+		"@asyncswap/jsonrpc": "^0.4.15"
 	}
 }
